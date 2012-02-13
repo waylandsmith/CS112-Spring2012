@@ -31,6 +31,12 @@ screen.fill(WHITE)
 ##  parameter
 #################################
 
+pygame.draw.circle(screen,BLUE,(150,150),75,10)
+pygame.draw.circle(screen,YELLOW,(230,230),75,10)
+pygame.draw.circle(screen,BLACK,(305,150),75,10)
+pygame.draw.circle(screen,GREEN,(385,230),75,10)
+pygame.draw.circle(screen,RED,(460,150),75,10)
+
 
 ## Loop
 clock = pygame.time.Clock()

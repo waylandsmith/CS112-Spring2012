@@ -8,18 +8,39 @@ nums = input_nums()
 # 1. "nums" is a list of numbers entered from the command line.  How many
 #    numbers were entered?
 
-print "1.", __
+
+thisWasWayHarderInMyHead=len(nums)
+
+print "1.",thisWasWayHarderInMyHead
+
 
 # 2.  Append 3 and 5 to nums
+
+nums.append(3)
+nums.append(5)
 
 print "2.", nums
 
 # 3.  Remove the last element from nums
 
+countingNums = thisWasWayHarderInMyHead-1
+countingNums = int(countingNums)
+
+# print countingNums  # makes sure that countingNums works for TESTING PURPOSES
+
+# [:countingNums] tells the list to end at countingNums
+nums=nums[:countingNums]
+
 print "3.", nums
 
 
 # 4.  Set the 3rd element to 7
+
+nums[2]=7
+
+#nums2=nums[2:2]
+#nums[2]='7'
+#nums=nums2[:]
 
 print "4.", nums
 
