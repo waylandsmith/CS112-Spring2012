@@ -8,8 +8,8 @@ A simple competitive game where players take stones from stone piles.
 """
 
 
-pile = 40
-
+pile = raw_input("How many stones are in the pile? ")
+pile = int(pile)
 # by setting the limiter here we can change it in one place if we want to.
 limiter=5
 print "the number of stones in the pile: ",pile
