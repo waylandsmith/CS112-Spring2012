@@ -1,18 +1,26 @@
 #!/usr/bin/env python
 from random import randint
-s=1
-t=int(raw_input())
-rr=[]
-for _ in range(t):
-    rr.append(randint(0,20))
-print rr
-while s:
-    s=0
-    for var in range(1,t):
-        if rr[var-1]>rr[var]:
-            t1=rr[i-1]
-            t2=rr[i]
-            rr[i-1]=t2
-            rr[i]=t1
+
+
+inputNumber=int(raw_input())
+numberList=[]
+
+# this section creates a series of random numbers in numberList equal to the length of the input
+for nameless in range(inputNumber):
+    numberList.append(randint(0,20))
+print numberList
+
+"""
+notDone=1
+while notdone:
+    notDone=0 # the loop will only loop once
+
+    for var in range(1,inputNumber):
+        if numberList[var-1] > numberList[var]:
+            t1= numberList[var-1]
+            t2= numberList[var]
+            numberList[var-1] = t2
+            numberList[var] = t1
             s=1
-print rr
+print numberList
+"""
