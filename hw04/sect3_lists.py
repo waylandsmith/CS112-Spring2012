@@ -4,6 +4,8 @@ from hwtools import *
 print "Section 3:  Lists"
 print "-----------------------------"
 
+print "root@DEATHBOT_9000 says:  YOU MUST GIVE MORE THAN THREE NUMBERS FOR THIS PROGRAM TO WORK"
+
 nums = input_nums()
 # 1. "nums" is a list of numbers entered from the command line.  How many
 #    numbers were entered?
