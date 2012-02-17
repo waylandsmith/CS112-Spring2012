@@ -1,0 +1,8 @@
+This is the individual generator for extra credit I mentioned to the TAs.
+
+Currently (14 February) the application has hit a decision point.  I can either build a single gargantuan
+script or set of scripts which will provide the desired functionality....or I can write a script which references
+a table saved in a CSV format or the like.  This will provide the ability for the generator to switch out
+rulesets, but will also require the script to be installed in a directory alongside the file.
+
+I am willing to consider the thoughts of the TAs on this.

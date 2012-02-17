@@ -1,0 +1,10 @@
+example;hit die;fort save;reflex save;will save;BAB;skill points;is_caster
+Commoner;d4;POOR;POOR;POOR;POOR;2;FALSE
+Adept;d6;POOR;POOR;GOOD;POOR;2;TRUE
+Aristocrat;d8;POOR;POOR;GOOD;AVG;4;FALSE
+Expert;d6;POOR;POOR;GOOD;AVG;6;FALSE
+Warrior;d8;GOOD;POOR;POOR;GOOD;2;FALSE
+Psion;d4;POOR;POOR;GOOD;POOR;2;TRUE
+Psychic Warrior;d8;GOOD;POOR;POOR;AVG;2;TRUE
+Soulknife;d10;POOR;GOOD;GOOD;AVG;4;FALSE
+Wilder;d6;POOR;POOR;GOOD;AVG;4;TRUE

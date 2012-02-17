@@ -1,8 +1,25 @@
 #!/usr/bin/env python
 
 import random
+import csv
 
-print "Welcome to the d20 Random Individual Generator v1.1"
+"""
+# generic example below
+# format = [hit die,fort save,reflex save,will save,base attack bonus,skill points,is_caster]
+# example = [d4,poor,poor,poor,poor,2,FALSE]
+example_class = csv.reader(open("d20ruleset.csv", "rb"))
+
+for row in example_class:
+    print row
+"""
+
+# for class_list[]: BAB=lvl
+
+# if clss_list
+
+print "Welcome to the d20 Random Individual Generator v1.3" # version 1.0 having been my JavaScript version @ the end of Web Design.
+# version 1.3 released on February 15, 2012
+
 # lets_go=raw_input("press any key to generate a random human individual")
 
 al_list = ['Lawful Good','Neutral Good','Chaotic Good','Lawful Neutral','True Neutral','Chaotic Neutral','Lawful Evil','Neutral Evil','Chaotic Evil']
@@ -13,9 +30,8 @@ print al_list[random.randint(0,8)]
 
 ### Level
 
-# lvl_list=[
-
-# this is a primitive level generator.  In the long run, weight the level generator.
+# this is a primitive level generator.  In the long run, I'll need to weight the level generator to favor the first few levels.
+# level range as a module is also a possibility, but not really something I intend to invoke initially
 lvl = random.randint(1,21)
 
 # print "Level",lvl
@@ -52,6 +68,8 @@ charisma = random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
 # prints out the abiilities
 print "Strengh:",strength,"Dexterity:",dexterity,"Constitution:",constitution,"Intelligence:",intelligence,"Wisdom:",wisdom,"Charisma:",charisma
 
+# score_bonus = (<score> - 10) / 2 # the bonus from an ability score
+
 # SAVING THROWS
 
 # this list contains the progression for saving throws based on level
@@ -73,12 +91,27 @@ d8 = (4 * lvl)
 d10 = (5 * lvl)
 d12 = (6 * lvl)
 
+# hit_points = 
 
 # CLASS INFO
 
 # generic example below
 # format = [hit die,fort save,reflex save,will save,base attack bonus,skill points,is_caster]
 # example = [d4,poor,poor,poor,poor,2,FALSE]
+
+example_class = csv.reader(open("d20classes.csv", "rb"))
+hd = 0
+
+if chosen_class is "Commoner":
+    for row in example_class:
+        print row
+    hd = d4 # next step:  find a way to access a specific row or position
+else:
+    print "details to come"
+
+hip = hd + (constitution * lvl) # a character's hit point total
+
+print "Health",hd,"Hit Points"
 
 # for class_list[]: BAB=lvl
 
