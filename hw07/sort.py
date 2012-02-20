@@ -8,18 +8,20 @@ I used this:
 """
 from hwtools import input_nums
 
-nums = inputnums()
+nums = input_nums()
 
-print "Before sort:"
+user_input = raw_input("how long is the list?: ")
+user_input = int(user_input) - 1
 print nums
 
-N=len(nums)-1
-for x in range(N)
-    p=x
-    for i in range(x+1 N):
-        if nums[i]<nums[p]:
-            pos=i
-   nums[x],nums[p]=nums[p],nums[x]
+listLength = len(nums) - 1
+
+for x in range(user_input):
+    initialPosition = x
+    for i in range( (x + 1) * listLength):
+        if nums[i] < nums[initialPosition]:
+            pos = i
+            nums[x], nums[initialPosition] = nums[initialPosition], nums[x]
 
 print "After sort:"
 print nums
