@@ -17,8 +17,10 @@ for row in example_class:
 
 # if clss_list
 
-print "Welcome to the d20 Random Individual Generator v1.3" # version 1.0 having been my JavaScript version @ the end of Web Design.
+print "Welcome to the d20 Random Individual Generator v1.4" # version 1.0 having been my JavaScript version @ the end of Web Design.
 # version 1.3 released on February 15, 2012
+# version 1.4.5 alpha finished on February 20, 2012
+# release notes:  added CSV support and health point generation for all classes.  Added Saving Throws (experimental) and some attack bonuses.
 
 # lets_go=raw_input("press any key to generate a random human individual")
 
@@ -38,7 +40,9 @@ lvl = random.randint(1,21)
 
 # this is a primitive class generator.  In the long run, weight this too.
 class_list = ['Commoner','Warrior','Adept','Aristocrat','Expert','Psion','Soulknife','Psychic Warrior','Wilder','Fighter','Wizard','Rogue','Cleric','Bard','Barbarian','Monk','Druid','Ranger','Sorcerer','Paladin']
+
 chosen_class = class_list[random.randint(0,18)]
+# chosen_class = "Commoner"
 
 print chosen_class,lvl
 
@@ -65,8 +69,16 @@ intelligence = random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
 wisdom = random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
 charisma = random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
 
+str_mod = (strength - 10) / 2
+dex_mod = (dexterity - 10) / 2
+con_mod = (constitution - 10) / 2
+int_mod = (intelligence - 10) / 2
+wis_mod = (wisdom - 10) / 2
+cha_mod = (charisma - 10) / 2
+
 # prints out the abiilities
 print "Strengh:",strength,"Dexterity:",dexterity,"Constitution:",constitution,"Intelligence:",intelligence,"Wisdom:",wisdom,"Charisma:",charisma
+print str_mod,dex_mod,con_mod,int_mod,wis_mod,cha_mod
 
 # score_bonus = (<score> - 10) / 2 # the bonus from an ability score
 
@@ -91,27 +103,91 @@ d8 = (4 * lvl)
 d10 = (5 * lvl)
 d12 = (6 * lvl)
 
-# hit_points = 
-
 # CLASS INFO
 
 # generic example below
 # format = [hit die,fort save,reflex save,will save,base attack bonus,skill points,is_caster]
 # example = [d4,poor,poor,poor,poor,2,FALSE]
 
-example_class = csv.reader(open("d20classes.csv", "rb"))
+example_class = csv.reader(open("d20classes.csv", "rb")) # READS FROM THE csv FILE
+
+# THE STATS WE'LL BE CRUNCHING
+bab = 0
+fort = 0
+reflex = 0
+wills = 0
 hd = 0
 
-if chosen_class is "Commoner":
-    for row in example_class:
-        print row
-    hd = d4 # next step:  find a way to access a specific row or position
-else:
-    print "details to come"
+##############
+# MAIN LOOP
+##############
 
-hip = hd + (constitution * lvl) # a character's hit point total
+for row in example_class:
+#    filter(class_parser, example_class) # took me a while to figure out how to manipulate objects from the CSV
+    if row[0] in chosen_class:
+        hd = ((int(row[1]) / 2) * lvl) + (con_mod * lvl)
+        print "Health:",hd,"hit points"
+        if row[2] in 'GOOD':
+            fort = saves_good[lvl-1]
+            fort = int(fort) + con_mod
+        else:
+            fort = saves_bad[lvl-1]
+            fort = int(fort) + con_mod
+        print "Fortitude save =",fort
+        if row[3] in 'GOOD':
+            reflex = saves_good[lvl-1]
+            reflex = int(reflex) + dex_mod            
+        else:
+            reflex = saves_bad[lvl-1]
+            reflex = int(reflex) + dex_mod            
+        print "Rexlex Save =",reflex
+        if row[4] in 'GOOD':
+            wills = saves_good[lvl-1]
+            wills = int(wills) + wis_mod            
+        else:
+            reflex = saves_bad[lvl-1]
+            reflex = int(wills) + wis_mod            
+        print "Will Save =",wills
+        if row[5] in 'GOOD':
+            bab = BAB_good
+        elif row[5] in 'POOR':
+            bab = BAB_poor
+        else:
+            break
 
-print "Health",hd,"Hit Points"
+print "Base Attack Bonus =",bab
+
+
+
+
+
+
+
+#####################################
+# THIS IS ALL JUNK
+#####################################
+#    else:
+#        print "to be added"
+
+
+
+#    row = str(row
+#    if row.lower() in ['commoner']:
+#        print row
+#if chosen_class is "Commoner":
+#    print example_class.next()
+#    print example_class.next()
+#    for row in ("Commoner" in example_class.next()):
+#        print row
+#        class_row = csvreader.next(example_class)
+#        print row
+#    hd = d4 # next step:  find a way to access a specific row or position
+#else:
+#    print "details to come"
+ 
+# hip = hd + (constitution * lvl) # a character's hit point total
+
+# print "Health",hd,"Hit Points"
 
 # for class_list[]: BAB=lvl
 
