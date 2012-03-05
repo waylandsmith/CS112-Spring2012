@@ -7,3 +7,18 @@ The simple game of tron with two players.  Press the space bar to start the game
 
 import pygame
 from pygame.locals import *
+
+class
+
+#def kill():
+
+
+pygame.init()
+screen = pygame.display.set_mode()
+bounds = screen.get_rect()
+clock = pygame.time.Clock()
+done = False
+
+while not done:
+
+    pygame.display.flip()

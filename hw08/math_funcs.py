@@ -9,8 +9,15 @@ import math
 #      >>> distance((0,0), (3,4))
 #      5
 
-# def distance(a, b):
+def distance(a, b):
+    xa,ya = a
+    xb,yb = b
+    cx = xa - xb
+    cy = ya - yb
+    c = math.sqrt((cx**2)+(cy**2))
+    return c
 
+    
 
 # ADVANCED
 # Normalizing Vectors
