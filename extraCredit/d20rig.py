@@ -1,13 +1,52 @@
 #!/usr/bin/env python
 
 import random
+import sys
 import csv
 
+preset_level = 0
+if (len(sys.argv) > 1):
+    preset_level = sys.argv[1]
+    
+class Individual(object):
+    def __init__(self, name = "Jane Doe"):
+        self.name = name
+
+    def say(self, message):
+        print self.name+": "+message
+        
+    def sayto(self, other, message):
+        self.say(message+", "+other.name)
+        
+        
+testing = Individual("Matt")
+frederick = Individual()
+testing.sayto(frederick, "Matt is the bomb")       
+
+class Spell_list(object):
+    def __init__(self, name):
+        self.name = name
+        self.enrolled = []
+        
+    def enroll(self, wizard):
+        self.enrolled.append(wizard)
+        
+cs112 = Spell_list("CS112")
+cs112.enroll(testing)
+"""
+class Indv(object):
+    def __init__(self, alignment, level, cClass, abilities, defenses, attacks):
+    
+    def abilities(strength,dexterity,constitution,intelligence,wisdom,charisma): 
+
+
+"""
 print "Welcome to the d20 Random Individual Generator v1.5" # version 1.0 having been my JavaScript version @ the end of Web Design.
 # version 1.3 released on February 15, 2012
 # version 1.4.5 alpha finished on February 20, 2012
 # version 1.5 alpha finished on February 21, 2012
-# current version notes: now full support for a CSV sheet which details HD, BAB, Saves, Skill Points, and True/False caster status.
+# version 1.5.5 alpha on March 5, 2012
+# current version notes: Now has a command line argument for starting level.  Now full support for a CSV sheet which details HD, BAB, Saves, Skill Points, and True/False caster status.
 
 
 # lets_go=raw_input("press any key to generate a random human individual")
@@ -22,8 +61,12 @@ print al_list[random.randint(0,8)]
 
 # this is a primitive level generator.  In the long run, I'll need to weight the level generator to favor the first few levels.
 # level range as a module is also a possibility, but not really something I intend to invoke initially
-lvl = random.randint(1,21)
-
+if preset_level == 0:
+    lvl = random.randint(1,21)
+else:
+    lvl = preset_level
+    lvl = int(lvl)
+    
 # print "Level",lvl
 
 # this is a primitive class generator.  In the long run, weight this too.
